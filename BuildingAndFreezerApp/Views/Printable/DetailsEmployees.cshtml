@@ -1,0 +1,50 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsEmployees";
+    int i = 0;
+}
+
+<h2>Details Employees</h2>
+<div class="panel">
+    <div class="panel-body alert alert-info text-right">
+        <h3>
+            الاجمالى العمال : @ViewBag.sum
+        </h3>
+    </div>
+</div>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary"> العمال</caption>
+
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            اسم العامل
+        </th>
+        <th>
+            الاجمالى
+        </th>
+
+    </tr>
+    @foreach (var item in Model.BuildingEmployee)
+    {
+
+        if (item != null)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employess.empName)
+                </td>
+                <td>
+                    @Model.sumEmployee[i]
+
+                </td>
+
+            </tr>
+        }
+
+        i++;
+
+    }
+
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.period>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2 class="alert alert-success text-center"> اضافة دورات </h2>
+
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Fridage.Fr_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PeriodName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>تعديل</th>
+        <th>تفاصيل</th>
+        <th>انهاء الدورة</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fridage.Fr_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.PeriodName)
+    </td>
+    @if (item.isActive)
+    {
+        <td>الدورة حاليا</td>
+    }
+    else
+    {
+        <td>الدورة انتهت</td>
+    }
+    <td>
+        @Html.DisplayFor(modelItem => item.StartDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EndDate)
+    </td>
+    <td>
+        @Html.ActionLink("تعديل", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+    </td>
+    <td>
+        @Html.ActionLink("تفاصيل", "Details", new { id = item.Id }, new { @class = "btn btn-warning" })
+    </td>
+    <td>
+        @using (Html.BeginForm("End", "periods", new { id = item.Id }, FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="انهاء الدورة" class="btn btn-danger" />
+
+            </div>
+        }
+
+    </td>
+
+
+
+</tr>
+    }
+
+</table>

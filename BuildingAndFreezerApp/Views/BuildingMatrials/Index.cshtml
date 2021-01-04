@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.BuildingMatrial>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-success text-center">مواد البناء  </h2>
+
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            @Html.DisplayNameFor(model => model.BillNumbe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matriel.matName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.buildName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prices)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MumOfMat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PricePerOne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+
+
+        <th>تعديل</th>
+        <th>حذف</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(model => item.BillNumbe)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matriel.matName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.buildName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prices)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MumOfMat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PricePerOne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,205 @@
+﻿@model BuildingAndFreezerApp.Models.FreezerRepositry
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+    decimal? x = 0;
+    decimal? y = 0;
+    decimal? z = 0;
+    decimal? w = 0;
+    decimal? B = 0;
+    decimal? csh = 0;
+    decimal? chg = 0;
+    decimal? count = 0;
+    decimal? o = 0;
+    decimal? m = 0;
+    decimal? t = 0;
+
+}
+<br />
+<br />
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="alert alert-info text-center">التجار</caption>
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            الاسم
+        </th>
+        <th>
+            النوع
+        </th>
+        <th>
+            عدد الاطنان
+        </th>
+        <th>
+            عدد الشكاير
+        </th>
+        <th>
+            سعر الوحدة
+        </th>
+        <th>
+            المدفوع
+        </th>
+        <th>
+            المتبقى
+        </th>
+        <th>
+            العنبر
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Trader)
+    {
+        //x += item.FreezerCeteogry.PricePerTon * item.Number;
+        //y += item.Number;
+        //z += item.Cash==null?0: item.Cash;
+        //w += item.Change == null ? 0 : item.Change;
+        x += item.Number;
+
+        <tr>
+            <td>
+                @Html.DisplayFor(Item => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.FreezerCeteogry.Type)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.NumberOfOne)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.FreezerCeteogry.PricePerTon)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Cash)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Change)
+            </td>
+            <td>
+                @Html.DisplayFor(Item => item.Section)
+
+            </td>
+
+
+        </tr>
+
+        B += item.Cash == null ? 0 : item.Cash;
+        w += item.Change == null ? 0 : item.Change;
+        count += item.NumberOfOne == null ? 0 : item.NumberOfOne;
+    }
+</table>
+<div class="alert alert-success text-right">      الاجمالى  الكلى للتجار  : @String.Format("{0:0,0.0}", (B + w))</div>
+<div class="alert alert-success text-right">    اجمالى المدفوع من التجار  : @String.Format("{0:0,0.0}", B) </div>
+<div class="alert alert-success text-right">    اجمالى المتبقى على التجار  : @String.Format("{0:0,0.0}", w)</div>
+<div class="alert alert-success text-right">    اجمالى عدد الشكاير  : @String.Format("{0:0,0.0}", count)</div>
+<div class="alert alert-success text-right">    اجمالى عدد الاطنان  : @String.Format("{0:0,0.0}", x)</div>
+<hr />
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="alert alert-info text-center">الافراد</caption>
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            الاسم
+        </th>
+        <th>
+            النوع
+        </th>
+        <th>
+            العدد
+        </th>
+        <th>
+            سعر الوحدة
+        </th>
+        <th>
+            الحجم
+        </th>
+        <th>
+            المدفوع
+        </th>
+        <th>
+            المتبقى
+        </th>
+        <th>
+            العنبر
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Customer)
+    {
+
+
+        <tr>
+            <td>
+                @Html.DisplayFor(Item => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.FreezerCeteogry.Type)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Number)
+            </td>
+            @if (item.Size == "صغير")
+            {
+                <td>
+                    @Html.DisplayFor(Item => item.FreezerCeteogry.PricePerSmall)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(Item => item.FreezerCeteogry.PricePerLarge)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(Item => item.Size)
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Cash)
+
+
+            </td>
+
+            <td>
+                @{
+                    if (item.Size == "صغير")
+                    {
+                        o = item.FreezerCeteogry.PricePerSmall * item.Number;
+                    }
+                    else
+                    {
+                        o = item.FreezerCeteogry.PricePerLarge * item.Number; ;
+                    }
+                    m = o - item.Cash;
+
+                }
+                @m
+            </td>
+
+            <td>
+                @Html.DisplayFor(Item => item.Section)
+            </td>
+
+        </tr>
+        z += item.Cash == null ? 0 : item.Cash;
+        y += m;
+        t += item.Number == null ? 0 : item.Number;
+    }
+
+</table>
+<div class="alert alert-success text-right">  الاجمالى *الافراد* للعنبر :@String.Format("{0:0,0.0}", (y + z))</div>
+
+<div class="alert alert-success text-right">  اجمالى المدفوع من الافراد  :@String.Format("{0:0,0.0}", z)</div>
+<div class="alert alert-success text-right">   اجمالى الباقى على الافراد :@String.Format("{0:0,0.0}", y)</div>
+<div class="alert alert-success text-right">  اجمالى عدد الشكاير للعنبر :@String.Format("{0:0,0.0}", t)</div>
+<div class="alert alert-danger text-center">  الاجمالى الكلى  :@String.Format("{0:0,0.0}", (y + z) + (csh + chg))</div>

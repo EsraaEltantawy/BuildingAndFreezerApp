@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Fridage>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-info text-center">التلاجات</h2>
+
+<p>
+    @Html.ActionLink("إضافه تلاجه جديده", "Create",null,new { @class= "btn btn-info" })
+</p>
+<table class="table table-bordered table-hover table-striped" >
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>التلاجه</th>
+        <th>عدد العنابر</th>
+        <th> الدورات </th>
+        <th>التجار</th>
+        <th>الأفراد</th>
+        <th>الخزنه</th>
+        <th>تعديل</th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fr_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fr_NumOfSection)
+    </td>
+    <td>
+        @Html.ActionLink(" إضافه دوره", "Index","Periods", new { id = item.Fr_id }, new { @class = "btn btn-primary" })
+
+    </td>
+    <td>
+        @Html.ActionLink("التجار", "Index","Traders", new { id = item.Fr_id }, new { @class = "btn btn-primary" })
+
+    </td>
+    <td>
+        @Html.ActionLink("الأفراد", "Index","Customers", new { id = item.Fr_id }, new { @class = "btn btn-primary" })
+
+    </td>
+    <td>
+        @Html.ActionLink("الخزنه", "Index","BankFreexers" ,new { id = item.Fr_id }, new { @class = "btn btn-primary" })
+
+    </td>
+    <td>
+        @Html.ActionLink("تعديل", "Edit", new { id = item.Fr_id }, new { @class = "btn btn-success" })
+
+    </td>
+</tr>
+}
+
+</table>

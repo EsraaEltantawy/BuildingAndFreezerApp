@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Building>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-success text-center">العمارات</h2>
+
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped text-center">
+    <tr class=" alert alert-danger table-active table-warning text-center">
+
+        <th>
+            @Html.DisplayNameFor(model => model.buildName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamberHouses)
+        </th>
+        <th>تعديل</th>
+        <th>تفاصيل</th>
+        <th>حذف</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.buildName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamberHouses)
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("تفاصيل", "Details", new { id = item.id }, new { @class = "btn btn-warning" })
+            </td>
+            <td>
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

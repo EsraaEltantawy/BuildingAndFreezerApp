@@ -1,0 +1,40 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsOneEmployee";
+}
+
+<h2 class="alert alert-success text-center">
+    تقرير العامل
+</h2>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption>العمال</caption>
+
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            اسم العامل
+        </th>
+        <th>
+            المبلغ
+        </th>
+        <th>
+            التاريخ
+        </th>
+    </tr>
+
+    @foreach (var item in Model.BuildingEmployee)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employess.empName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,173 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "Details";
+    bool check = false;
+}
+
+
+<h2 class="alert alert-warning text-center">تفاصيل</h2>
+
+<div class="col-md-6">
+    <h2 class="alert alert-success text-center">تفاصيل العميل</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.Building.buildName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.Building.buildName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.ClientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.ClientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.ClientAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.ClientAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.FlatNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.FlatNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.RePrices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.RePrices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.CashPrices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.CashPrices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.Comission)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.Comission)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.ChangePrices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.ChangePrices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.NumPrem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.NumPrem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.DateFirstPrem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.oneClient.DateFirstPrem)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayNameFor(model => model.oneClient.Photo)
+            </dt>
+
+            <dd>
+                <img src="~/Images/@Model.oneClient.Photo" alt="@Model.oneClient.Photo" style="height:150px; width:150px" class="img-rounded img-thumbnail" />
+            </dd>*@
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.oneClient.ClientPhoto)
+        </dt>
+
+        <dd>
+            <img src="~/Images/@Model.oneClient.ClientPhoto" alt="@Model.oneClient.ClientPhoto" style="height:150px; width:150px" class="img-rounded img-thumbnail" />
+        </dd>
+
+
+    </dl>
+</div>
+<div class="col-md-6">
+
+    <h2 class="alert alert-success text-center">عرض الاقساط</h2>
+
+    <table class="table table-borderless table-bordered table-hover table-striped">
+        <caption class="table table-primary"> العملاء</caption>
+
+        <tr class="table alert alert-danger table-active table-warning">
+            <th>
+                اسم العميل
+            </th>
+            <th>
+                التاريخ
+            </th>
+            <th>
+                المدفوع
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model.ClientReserve)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reserve.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                @if (item.Prices == null)
+                {
+                    if (check)
+                    {
+                        <td class="text-danger  alert alert-danger"> غير مستحق</td>
+                    }
+                    else
+                    {
+                        <td class="text-danger  alert alert-warning"> مستحق</td>
+                        check = true;
+                    }
+
+
+                }
+                else
+                {
+                    <td class="alert alert-success">@item.Prices</td>
+                    check = false;
+                }
+
+
+
+            </tr>
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.oneClient.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

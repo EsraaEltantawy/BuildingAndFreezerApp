@@ -1,0 +1,147 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+
+}
+
+<h2 class="alert alert-success text-center">المصاريف</h2>
+
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="tablePayment" class="display animated fadeInLeftBig table table-striped table-responsive table-bordered ">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Edit</th>
+            <th>Details</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td>
+                اجمالى الكهرباء : @ViewBag.totalprice
+            </td>
+            <td>اجمالى الصيانة : @ViewBag.totalprice2</td>
+            <td>اجمالى النقل : @ViewBag.totalprice3</td>
+            <td>
+                اجمالى المرتبات  : @ViewBag.totalprice4
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<br />
+@*<div class="alert alert-warning text-center">
+
+        <h4>
+            اجمالى الكهرباء : @ViewBag.totalprice
+            <br />
+            اجمالى الصيانة : @ViewBag.totalprice2
+            <br />
+
+            اجمالى النقل : @ViewBag.totalprice3
+            <br />
+            اجمالى المرتبات  : @ViewBag.totalprice4
+        </h4>
+    </div>*@
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+@section scripts{
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script>
+        $(function () {
+            var table = $("#tablePayment").DataTable({
+                "ajax": {
+                    "url": "/Payments/Getall",
+                    "type": "GET",
+                    "datatype": "json"
+
+                },
+                "columns": [
+
+                    {
+                        "data": "Date", "autoWidth": true, "render": function (data) {
+
+                            return moment(data).format("DD-MM-YYYY");
+                        }
+                    },
+                    { "data": "Type", "autoWidth": true },
+                    { "data": "Details", "autoWidth": true },
+                    { "data": "Price", "autoWidth": true },
+                    {
+                        "data": "id", "Width": "50px", "render": function (data) {
+
+                            return '<a class="btn btn-success" href="/Payments/Edit/' + data + '"><i class="glyphicon glyphicon-edit" ></i></a>';
+                        }
+                    },
+                    {
+                        "data": "id", "Width": "20px", "render": function (data) {
+                            return '<a class="btn btn-primary" href="/Payments/Details/' + data + '"><i class="glyphicon glyphicon-list"></i></a>';
+                        }
+                    },
+                    {
+                        "data": "id", "Width": "50px", "render": function (data) {
+                            return '<a class="btn btn-danger" href="/Payments/Delete/' + data + '"><i class="glyphicon glyphicon-trash"></i></a>';
+
+                        }
+                    }
+
+                ],
+
+            });
+
+
+        });
+
+    </script>
+}
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>*@

@@ -1,0 +1,79 @@
+﻿@model BuildingAndFreezerApp.Models.Customer
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+}
+
+<h2 class="alert alert-success text-center">تعديل </h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreezerCeteogry.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreezerCeteogry.Type)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.period.PeriodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.period.PeriodName)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة للقائمة السابقة", "Index", null, htmlAttributes: new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

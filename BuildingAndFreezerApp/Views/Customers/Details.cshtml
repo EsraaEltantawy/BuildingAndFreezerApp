@@ -1,0 +1,65 @@
+﻿@model BuildingAndFreezerApp.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+}
+
+<h1 class="alert alert-success text-center">تفاصيل</h1>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreezerCeteogry.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreezerCeteogry.Type)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.period.PeriodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.period.PeriodName)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Size)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Size)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تعديل ", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("العودة للقائمة السابقة", "Index", null, htmlAttributes: new { @class = "btn btn-info" })
+</p>

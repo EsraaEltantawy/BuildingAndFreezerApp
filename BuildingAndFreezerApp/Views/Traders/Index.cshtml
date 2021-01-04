@@ -1,0 +1,151 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Trader>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+    decimal? x = 0, y = 0;
+
+}
+
+<div class="panel">
+    <div class="panel-heading">
+        <h1 class="alert alert-success text-center">التجار</h1>
+    </div>
+    <div class="panel-body alert alert-link  form-group form-inline list-inline">
+        @using (Html.BeginForm("Index", "Traders", FormMethod.Get))
+        {
+            <input type="submit" value="بحث" class="btn btn-success form-control " />
+            @Html.TextBox("searching", "", null, htmlAttributes: new { @class = "form-control ", placeholder = "ادخل اسم التاجر", @id = "txtsearch" })
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Fridage.Fr_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+      </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FreezerCeteogry.Type)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Section)
+        </th>
+
+        <th>
+            @*عدد الشكاير*@
+            @Html.DisplayNameFor(model => model.NumberOfOne)
+        </th>
+        <th>
+            @*وزن الشكاره *@
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @*عدد الاطنان*@
+            @Html.DisplayNameFor(model => model.Number)
+        </th>
+        <th>
+            الاجمالى
+        </th>
+        <th>
+            @*النقدى*@
+            @Html.DisplayNameFor(model => model.Cash)
+        </th>
+        <th>
+            @*الباقى*@
+            @Html.DisplayNameFor(model => model.Change)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+
+        <th>تعديل</th>
+        <th>تفاصيل</th>
+        <th>حذف</th>
+        <th>سداد</th>
+    </tr>
+
+    @if (Model.Count() == 0)
+    {
+        <tr>
+            <td colspan="3" style="color :red">
+                NO Matching Data!!
+            </td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fridage.Fr_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FreezerCeteogry.Type)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.Section)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfOne)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Weight)
+    </td>
+    <td>
+        @*@{
+                var w = (item.NumberOfOne * item.Weight) / 1000;
+
+            }
+            @w*@
+        @Html.DisplayFor(modelItem => item.Number)
+    </td>
+    <td>
+        @{
+            y = item.Number * item.FreezerCeteogry.PricePerTon;
+        }
+        @y
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cash)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Change)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date)
+    </td>
+
+    <td>
+        @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+    </td>
+    <td>
+        @Html.ActionLink("تفاصيل", "Details", new { id = item.id }, new { @class = "btn btn-warning" })
+    </td>
+    <td>
+        @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+    </td>
+    <td>
+        @Html.ActionLink("دفع المتبقى", "CashChange", new { id = item.id }, new { @class = "btn btn-primary" })
+    </td>
+</tr>
+            x += y;
+        }
+    }
+</table>
+<h3> الاجمالى :@x </h3>

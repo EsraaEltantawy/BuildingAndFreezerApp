@@ -1,0 +1,39 @@
+﻿@model BuildingAndFreezerApp.Models.Building
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="alert alert-danger text-center"> حذف </h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.buildName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.buildName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamberHouses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamberHouses)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="حذف" class="btn btn-danger" /> |
+            @Html.ActionLink("العودة للقائمة السابقة", "Index", null, htmlAttributes: new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

@@ -1,0 +1,70 @@
+﻿@model BuildingAndFreezerApp.Models.Trader
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+
+}
+
+<h1 class="alert alert-danger text-center">تفاصيل التاجر</h1>
+
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FreezerCeteogry.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.period.PeriodName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.period.PeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FreezerCeteogry.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @{
+                var w = (Model.NumberOfOne * Model.Weight) / 1000;
+
+            }
+            @w
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

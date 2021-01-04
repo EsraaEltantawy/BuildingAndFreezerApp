@@ -1,0 +1,51 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsOneClient";
+    var i = 0;
+}
+
+<h2 class="alert alert-success text-center">عرض الاقساط</h2>
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary"> العملاء</caption>
+
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            اسم العميل
+        </th>
+        <th>
+            التاريخ
+        </th>
+        <th>
+            المدفوع
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model.ClientReserve)
+    {
+        i++;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reserve.ClientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            @if (item.Prices == null)
+            {
+                <td class="text-danger"> لم يتم الدفع</td>
+
+            }
+            else
+            {
+                <td>@item.Prices</td>
+            }
+
+
+
+        </tr>
+    }
+
+</table>

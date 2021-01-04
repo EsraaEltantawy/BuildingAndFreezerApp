@@ -1,0 +1,48 @@
+﻿@model BuildingAndFreezerApp.Models.FreezerRepositry
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+    int index = Model.BankFreezer.Max(x => x.id);
+    decimal? bank = Model.BankFreezer.Where(x => x.id == index).FirstOrDefault().CurrentPrices;
+    var payment = Model.Payment.Sum(x => x.Price);
+    var exportMoney = Model.Trader.Sum(x => x.Number * x.PricePerOne) + Model.Customer.Sum(y => y.Number * y.PricePerOne);
+    var profit = exportMoney - payment;
+
+}
+
+<h2 class="alert alert-success text-center"> البنك</h2>
+@if (User.Identity.Name == "ayman5383@gmail.com" || User.Identity.Name == "hossam50@gmail.com")
+{
+    <p>
+        @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+}
+<div class="panel">
+    <div class="panel-body">
+        <div class="alert alert-warning">
+            <h4>الخزنة</h4>
+            <h4>@bank</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-danger">
+            <h4> اجمالى المصاريف</h4>
+            <h4>@payment</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-danger">
+            <h4> الواردات</h4>
+            <h4>@exportMoney</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-info">
+            <h4>صافى الربح</h4>
+            <h4>
+                @profit
+            </h4>
+        </div>
+    </div>
+</div>

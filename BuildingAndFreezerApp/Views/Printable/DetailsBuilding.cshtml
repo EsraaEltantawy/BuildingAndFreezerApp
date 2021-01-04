@@ -1,0 +1,84 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "Details Building";
+    decimal? sumCash = 0;
+    decimal? sumChange = 0;
+    decimal? sumprice = 0;
+
+    decimal? sumReprice = 0;
+
+    decimal? x = 0;
+}
+
+<h2 class="alert alert-success text-center">تفاصيل</h2>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary"> العملاء</caption>
+    <thead>
+        <tr class="table alert alert-danger table-active table-warning">
+            <th>
+                اسم العميل
+            </th>
+            <th>
+                المدفوع
+            </th>
+            <th>
+                الباقى
+            </th>
+            <th>
+                المطلوب
+            </th>
+            <th>
+                السعر الفعلى
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Reserves)
+        {
+            sumCash += item.RePrices - item.ChangePrices;
+            sumChange += item.ChangePrices;
+            sumReprice += item.RePrices;
+            sumprice += item.RePrices - item.Comission;
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @{x = item.RePrices - item.ChangePrices; }     @String.Format("{0:###,###,###}", x)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChangePrices)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RePrices)
+                </td>
+                <td>
+                    @{x = item.RePrices - item.Comission; }     @String.Format("{0:###,###,###}", x)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr class="alert alert-danger">
+            <td>
+                الاجمالى
+            </td>
+            <td>
+                @String.Format("{0:###,###,###}", sumCash)
+            </td>
+            <td>
+                @String.Format("{0:###,###,###}", sumChange)
+            </td>
+            <td>
+                @String.Format("{0:###,###,###}", sumReprice)
+            </td>
+            <td>
+                @String.Format("{0:###,###,###}", sumprice)
+            </td>
+        </tr>
+    </tfoot>
+
+</table>

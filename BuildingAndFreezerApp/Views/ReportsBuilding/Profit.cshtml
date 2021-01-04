@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Profit";
+}
+
+<h2 class="alert alert-success text-center">صافى الارباح</h2>
+<div class="panel">
+    <div class="panel-body">
+        <div class="alert alert-warning">
+            <h4>الاجمالى المصروفات</h4>
+            <h4>@String.Format("{0:0,0.0}", (decimal)ViewBag.SumoutPrices)</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-danger">
+            <h4>الاجمالى المدفوع من الحجوزات</h4>
+            <h4>@String.Format("{0:0,0.0}", (decimal)ViewBag.sumClientReserve)</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-info">
+            <h4>صافى الربح</h4>
+            <h4>
+                @{decimal? x = ViewBag.sumClientReserve == null ? 0 : ViewBag.sumClientReserve;
+                    decimal? y = ViewBag.SumoutPrices == null ? 0 : ViewBag.SumoutPrices;
+                    decimal? z = x - y;} @String.Format("{0:0,0.0}", z)
+                </h4>
+            </div>
+        </div>
+    </div>

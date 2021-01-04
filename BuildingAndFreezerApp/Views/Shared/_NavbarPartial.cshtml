@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.Owin;
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("مجموعة شركات ايمن المكروم ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+
+        <div class="navbar-collapse collapse">
+            @if (Request.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav">
+                    @if (User.Identity.Name != "MangerBuilding@gamil.com")
+                    {
+                        <li class="nav-item dropdown">
+
+                            <a class="dropdown-toggle" id="drp" data-toggle="dropdown">
+                                التلاجات                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="ndropdown-item">
+                                    @Html.ActionLink("الصفحة الرئيسية", "IndexFreezer", "Home")
+                                </li>
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("اضافة صنف", "Index", "FreezerCeteogries")
+                                </li>
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("اضافة دورة", "Index", "periods")
+                                </li>
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("تجار", "Index", "Traders")
+                                </li>
+
+
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("افراد", "Index", "Customers")
+                                </li>
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("المصروفات", "Index", "Payments")
+                                </li>
+
+                                <li class="dropdown-item">@Html.ActionLink("البنك", "Index", "BankFreezers")</li>
+
+                                <li class="dropdown-divider"></li>
+                                @if (User.Identity.Name == "ayman5383@gmail.com" || User.Identity.Name == "hossam50@gmail.com")
+                                {
+                                    <li class="dropdown-header"> <h5>تقرير</h5></li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر امامى فوق", "Index", "Reports", new { name = "عنبر امامى فوق" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر امامى تحت", "Index", "Reports", new { name = "عنبر امامى تحت" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر اوسط فوق", "Index", "Reports", new { name = "عنبر اوسط فوق" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر اوسط تحت", "Index", "Reports", new { name = "عنبر اوسط تحت" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر خلفى فوق", "Index", "Reports", new { name = "عنبر خلفى فوق" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("عنبر خلفى تحت", "Index", "Reports", new { name = "عنبر خلفى تحت" }, new { @class = "dropdown-item" })</li>
+                                    <li class="dropdown-item">@Html.ActionLink("تقرير شامل", "FinalReport", "Reports", null, new { @class = "dropdown-item" })</li>
+
+                                }
+
+                            </ul>
+                        </li>
+                    }
+
+
+                    <li>@Html.ActionLink("المستندات", "Index", "Documents")</li>
+                    @if (User.Identity.Name != "MangerFreezer@gamil.com")
+                    {
+                        <li class="nav-item dropdown">
+
+                            <a class="dropdown-toggle" id="drp" data-toggle="dropdown">
+                                المقاولات                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item">
+                                    @Html.ActionLink("الصفحة الرئيسية", "Index", "Home")
+                                </li>
+                                <li class="nav-item">@Html.ActionLink("عمارات", "Index", "Buildings")</li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("العمال", "Index", "Employesses")
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("نثريات", "Index", "NonWorkstables")
+                                </li>
+                                <li class="nav-item">
+                                    @Html.ActionLink("مواد بناء", "Index", "Matriels")
+                                </li>
+                                <li><a href="/NonWorks/Index">مصاريف نثرية</a></li>
+                                <li><a href="/BuildingEmployees/Index">مصاريف عمال</a></li>
+                                <li><a href="/BuildingMatrials/Index">مصاريف مواد بناء</a></li>
+                                <li class="nav-item">@Html.ActionLink("حجز جديد", "Index", "Reserves")</li>
+                                <li class="nav-item">@Html.ActionLink("دفع اقساط", "IndexReserved", "Reserves")</li>
+
+
+                                <li class="nav-item">@Html.ActionLink("البنك", "Index", "BankBuildings")</li>
+
+
+                                @if (User.Identity.Name == "ayman5383@gmail.com" || User.Identity.Name == "hossam50@gmail.com")
+                                {
+                                    <li><a href="/ReportsBuilding/Index">تقرير العمارات</a></li>
+                                    <li><a href="/ReportsBuilding/AllOutPrices">تقرير كل العمارات</a></li>
+                                    <li><a href="/Printable/Index">طباعة التقرير</a></li>
+                                }
+                            </ul>
+                        </li>
+
+                    }
+
+                </ul>
+            }
+            @Html.Partial("_LoginPartial")
+        </div>
+
+    </div>
+</div>

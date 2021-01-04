@@ -1,0 +1,59 @@
+﻿@model BuildingAndFreezerApp.Models.Building
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 class="alert alert-success text-center"> اضافة   </h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Building</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="alert alert-danger animated fadeInRight" id="div-errorBuilding" style="display: none; text-align: end">
+            <span id="view-errorBuilding"></span>
+        </div>
+        @if (ViewBag.titleError != null)
+        {<div class="panel">
+                @if (ViewBag.Check == false)
+                {
+                    <h3 class="animated fadeInLeftBig panel-body alert-warning"> <i class="glyphicon glyphicon-alert"></i> @ViewBag.titleError</h3>
+                }
+
+            </div>}
+        <div class="form-group">
+            @Html.LabelFor(model => model.buildName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.buildName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.buildName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NamberHouses, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NamberHouses, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NamberHouses, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="اضافة" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("العودة للقائمة السابقة", "Index", null, htmlAttributes: new { @class = "btn btn-info" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,1501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Models.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankBuilding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentPrices" Type="decimal" Precision="30" Scale="2" />
+        </EntityType>
+        <EntityType Name="BankFreezer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrentPrices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="FrID" Type="int" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="buildName" Type="nvarchar" MaxLength="50" />
+          <Property Name="NamberHouses" Type="int" />
+        </EntityType>
+        <EntityType Name="BuildingEmployee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildID" Type="int" />
+          <Property Name="empID" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="BuildingMatrial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildID" Type="int" />
+          <Property Name="MatID" Type="int" />
+          <Property Name="Prices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="MumOfMat" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="PricePerOne" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="BillNumbe" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientReserve">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" />
+          <Property Name="BuildID" Type="int" />
+          <Property Name="FiatNum" Type="int" />
+          <Property Name="Prices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="PricePerOneSm" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PricePerOneLa" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="NewPricePerOneLa" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NewPricePerOneSm" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cash" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Change" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="Cat_id" Type="int" />
+          <Property Name="FrID" Type="int" Nullable="false" />
+          <Property Name="billID" Type="int" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocPath" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Employess">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="empName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FreezerCeteogry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="PricePerTon" Type="int" />
+          <Property Name="PricePerSmall" Type="int" />
+          <Property Name="PricePerLarge" Type="int" />
+        </EntityType>
+        <EntityType Name="Fridage">
+          <Key>
+            <PropertyRef Name="Fr_id" />
+          </Key>
+          <Property Name="Fr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fr_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Fr_NumOfSection" Type="int" />
+        </EntityType>
+        <EntityType Name="Matriel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="matName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NonWorks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NonId" Type="int" />
+          <Property Name="Det" Type="nvarchar(max)" />
+          <Property Name="Prices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Data" Type="datetime" />
+          <Property Name="BuildID" Type="int" />
+        </EntityType>
+        <EntityType Name="NonWorksTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nonName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Details" Type="nvarchar" MaxLength="150" />
+          <Property Name="Price" Type="decimal" Precision="30" Scale="2" />
+        </EntityType>
+        <EntityType Name="period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PeriodName" Type="nchar" MaxLength="50" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="FrID" Type="int" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildID" Type="int" />
+          <Property Name="FlatNumber" Type="int" />
+          <Property Name="ClientName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClientAddress" Type="nvarchar(max)" />
+          <Property Name="ClientPhoto" Type="nvarchar" MaxLength="100" />
+          <Property Name="RePrices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="CashPrices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Comission" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="ChangePrices" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="NumPrem" Type="int" />
+          <Property Name="DateFirstPrem" Type="datetime" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="100" />
+          <Property Name="Period" Type="int" />
+        </EntityType>
+        <EntityType Name="Trader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="decimal" Precision="30" Scale="4" />
+          <Property Name="PricePerOne" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Cash" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Change" Type="decimal" Precision="30" Scale="2" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumberOfOne" Type="int" />
+          <Property Name="Weight" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="cat_Id" Type="int" />
+          <Property Name="FrID" Type="int" Nullable="false" />
+          <Property Name="NewPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="billID" Type="int" />
+        </EntityType>
+        <Association Name="FK_BankFreezer_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="0..1" />
+          <End Role="BankFreezer" Type="Self.BankFreezer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="BankFreezer">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEmployee_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="BuildingEmployee" Type="Self.BuildingEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingEmployee">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEmployee_Employess">
+          <End Role="Employess" Type="Self.Employess" Multiplicity="0..1" />
+          <End Role="BuildingEmployee" Type="Self.BuildingEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employess">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingEmployee">
+              <PropertyRef Name="empID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingMatrial_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="BuildingMatrial" Type="Self.BuildingMatrial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingMatrial">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingMatrial_Matriel">
+          <End Role="Matriel" Type="Self.Matriel" Multiplicity="0..1" />
+          <End Role="BuildingMatrial" Type="Self.BuildingMatrial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Matriel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingMatrial">
+              <PropertyRef Name="MatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientReserve_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="ClientReserve" Type="Self.ClientReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientReserve">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientReserve_Reserve">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="0..1" />
+          <End Role="ClientReserve" Type="Self.ClientReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientReserve">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_FreezerCeteogry">
+          <End Role="FreezerCeteogry" Type="Self.FreezerCeteogry" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FreezerCeteogry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonWorks_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="NonWorks" Type="Self.NonWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NonWorks">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonWorks_NonWorksTable">
+          <End Role="NonWorksTable" Type="Self.NonWorksTable" Multiplicity="0..1" />
+          <End Role="NonWorks" Type="Self.NonWorks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonWorksTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NonWorks">
+              <PropertyRef Name="NonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_period_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="0..1" />
+          <End Role="period" Type="Self.period" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="period">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserve_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserve">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trader_FreezerCeteogry">
+          <End Role="FreezerCeteogry" Type="Self.FreezerCeteogry" Multiplicity="0..1" />
+          <End Role="Trader" Type="Self.Trader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FreezerCeteogry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Trader">
+              <PropertyRef Name="cat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trader_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="1" />
+          <End Role="Trader" Type="Self.Trader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="Trader">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelsStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankBuilding" EntityType="Self.BankBuilding" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankFreezer" EntityType="Self.BankFreezer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuildingEmployee" EntityType="Self.BuildingEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BuildingMatrial" EntityType="Self.BuildingMatrial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientReserve" EntityType="Self.ClientReserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employess" EntityType="Self.Employess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FreezerCeteogry" EntityType="Self.FreezerCeteogry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fridage" EntityType="Self.Fridage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matriel" EntityType="Self.Matriel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonWorks" EntityType="Self.NonWorks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NonWorksTable" EntityType="Self.NonWorksTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="period" EntityType="Self.period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserve" EntityType="Self.Reserve" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trader" EntityType="Self.Trader" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BankFreezer_Fridage" Association="Self.FK_BankFreezer_Fridage">
+            <End Role="Fridage" EntitySet="Fridage" />
+            <End Role="BankFreezer" EntitySet="BankFreezer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEmployee_Building" Association="Self.FK_BuildingEmployee_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="BuildingEmployee" EntitySet="BuildingEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEmployee_Employess" Association="Self.FK_BuildingEmployee_Employess">
+            <End Role="Employess" EntitySet="Employess" />
+            <End Role="BuildingEmployee" EntitySet="BuildingEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingMatrial_Building" Association="Self.FK_BuildingMatrial_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="BuildingMatrial" EntitySet="BuildingMatrial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingMatrial_Matriel" Association="Self.FK_BuildingMatrial_Matriel">
+            <End Role="Matriel" EntitySet="Matriel" />
+            <End Role="BuildingMatrial" EntitySet="BuildingMatrial" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientReserve_Building" Association="Self.FK_ClientReserve_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="ClientReserve" EntitySet="ClientReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientReserve_Reserve" Association="Self.FK_ClientReserve_Reserve">
+            <End Role="Reserve" EntitySet="Reserve" />
+            <End Role="ClientReserve" EntitySet="ClientReserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_FreezerCeteogry" Association="Self.FK_Customer_FreezerCeteogry">
+            <End Role="FreezerCeteogry" EntitySet="FreezerCeteogry" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Fridage" Association="Self.FK_Customer_Fridage">
+            <End Role="Fridage" EntitySet="Fridage" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonWorks_Building" Association="Self.FK_NonWorks_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="NonWorks" EntitySet="NonWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonWorks_NonWorksTable" Association="Self.FK_NonWorks_NonWorksTable">
+            <End Role="NonWorksTable" EntitySet="NonWorksTable" />
+            <End Role="NonWorks" EntitySet="NonWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_period_Fridage" Association="Self.FK_period_Fridage">
+            <End Role="Fridage" EntitySet="Fridage" />
+            <End Role="period" EntitySet="period" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserve_Building" Association="Self.FK_Reserve_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="Reserve" EntitySet="Reserve" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trader_FreezerCeteogry" Association="Self.FK_Trader_FreezerCeteogry">
+            <End Role="FreezerCeteogry" EntitySet="FreezerCeteogry" />
+            <End Role="Trader" EntitySet="Trader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trader_Fridage" Association="Self.FK_Trader_Fridage">
+            <End Role="Fridage" EntitySet="Fridage" />
+            <End Role="Trader" EntitySet="Trader" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Models" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="BankFreezer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentPrices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="FrID" Type="Int32" />
+          <NavigationProperty Name="Fridage" Relationship="Self.FK_BankFreezer_Fridage" FromRole="BankFreezer" ToRole="Fridage" />
+        </EntityType>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="buildName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NamberHouses" Type="Int32" />
+          <NavigationProperty Name="BuildingEmployees" Relationship="Self.FK_BuildingEmployee_Building" FromRole="Building" ToRole="BuildingEmployee" />
+          <NavigationProperty Name="BuildingMatrials" Relationship="Self.FK_BuildingMatrial_Building" FromRole="Building" ToRole="BuildingMatrial" />
+          <NavigationProperty Name="ClientReserves" Relationship="Self.FK_ClientReserve_Building" FromRole="Building" ToRole="ClientReserve" />
+          <NavigationProperty Name="NonWorks" Relationship="Self.FK_NonWorks_Building" FromRole="Building" ToRole="NonWorks" />
+          <NavigationProperty Name="Reserves" Relationship="Self.FK_Reserve_Building" FromRole="Building" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="BuildingEmployee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildID" Type="Int32" />
+          <Property Name="empID" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_BuildingEmployee_Building" FromRole="BuildingEmployee" ToRole="Building" />
+          <NavigationProperty Name="Employess" Relationship="Self.FK_BuildingEmployee_Employess" FromRole="BuildingEmployee" ToRole="Employess" />
+        </EntityType>
+        <EntityType Name="BuildingMatrial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildID" Type="Int32" />
+          <Property Name="MatID" Type="Int32" />
+          <Property Name="Prices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="MumOfMat" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="PricePerOne" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="BillNumbe" Type="Int32" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_BuildingMatrial_Building" FromRole="BuildingMatrial" ToRole="Building" />
+          <NavigationProperty Name="Matriel" Relationship="Self.FK_BuildingMatrial_Matriel" FromRole="BuildingMatrial" ToRole="Matriel" />
+        </EntityType>
+        <EntityType Name="ClientReserve">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" />
+          <Property Name="BuildID" Type="Int32" />
+          <Property Name="FiatNum" Type="Int32" />
+          <Property Name="Prices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_ClientReserve_Building" FromRole="ClientReserve" ToRole="Building" />
+          <NavigationProperty Name="Reserve" Relationship="Self.FK_ClientReserve_Reserve" FromRole="ClientReserve" ToRole="Reserve" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="PricePerOneSm" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PricePerOneLa" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="NewPricePerOneLa" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NewPricePerOneSm" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cash" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Change" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Cat_id" Type="Int32" />
+          <Property Name="FrID" Type="Int32" Nullable="false" />
+          <Property Name="billID" Type="Int32" />
+          <NavigationProperty Name="FreezerCeteogry" Relationship="Self.FK_Customer_FreezerCeteogry" FromRole="Customer" ToRole="FreezerCeteogry" />
+          <NavigationProperty Name="Fridage" Relationship="Self.FK_Customer_Fridage" FromRole="Customer" ToRole="Fridage" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employess">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="empName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BuildingEmployees" Relationship="Self.FK_BuildingEmployee_Employess" FromRole="Employess" ToRole="BuildingEmployee" />
+        </EntityType>
+        <EntityType Name="FreezerCeteogry">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PricePerTon" Type="Int32" />
+          <Property Name="PricePerSmall" Type="Int32" />
+          <Property Name="PricePerLarge" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_FreezerCeteogry" FromRole="FreezerCeteogry" ToRole="Customer" />
+          <NavigationProperty Name="Traders" Relationship="Self.FK_Trader_FreezerCeteogry" FromRole="FreezerCeteogry" ToRole="Trader" />
+        </EntityType>
+        <EntityType Name="Fridage">
+          <Key>
+            <PropertyRef Name="Fr_id" />
+          </Key>
+          <Property Name="Fr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fr_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Fr_NumOfSection" Type="Int32" />
+          <NavigationProperty Name="BankFreezers" Relationship="Self.FK_BankFreezer_Fridage" FromRole="Fridage" ToRole="BankFreezer" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Fridage" FromRole="Fridage" ToRole="Customer" />
+          <NavigationProperty Name="periods" Relationship="Self.FK_period_Fridage" FromRole="Fridage" ToRole="period" />
+          <NavigationProperty Name="Traders" Relationship="Self.FK_Trader_Fridage" FromRole="Fridage" ToRole="Trader" />
+        </EntityType>
+        <EntityType Name="Matriel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="matName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BuildingMatrials" Relationship="Self.FK_BuildingMatrial_Matriel" FromRole="Matriel" ToRole="BuildingMatrial" />
+        </EntityType>
+        <EntityType Name="NonWork">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NonId" Type="Int32" />
+          <Property Name="Det" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Prices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Data" Type="DateTime" Precision="3" />
+          <Property Name="BuildID" Type="Int32" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_NonWorks_Building" FromRole="NonWorks" ToRole="Building" />
+          <NavigationProperty Name="NonWorksTable" Relationship="Self.FK_NonWorks_NonWorksTable" FromRole="NonWorks" ToRole="NonWorksTable" />
+        </EntityType>
+        <EntityType Name="NonWorksTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NonWorks" Relationship="Self.FK_NonWorks_NonWorksTable" FromRole="NonWorksTable" ToRole="NonWorks" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="30" Scale="2" />
+        </EntityType>
+        <EntityType Name="period">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PeriodName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="FrID" Type="Int32" />
+          <NavigationProperty Name="Fridage" Relationship="Self.FK_period_Fridage" FromRole="period" ToRole="Fridage" />
+        </EntityType>
+        <EntityType Name="Reserve">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildID" Type="Int32" />
+          <Property Name="FlatNumber" Type="Int32" />
+          <Property Name="ClientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClientAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RePrices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="CashPrices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Comission" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="ChangePrices" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="NumPrem" Type="Int32" />
+          <Property Name="DateFirstPrem" Type="DateTime" Precision="3" />
+          <Property Name="Photo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Period" Type="Int32" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_Reserve_Building" FromRole="Reserve" ToRole="Building" />
+          <NavigationProperty Name="ClientReserves" Relationship="Self.FK_ClientReserve_Reserve" FromRole="Reserve" ToRole="ClientReserve" />
+        </EntityType>
+        <EntityType Name="Trader">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="Decimal" Precision="30" Scale="4" />
+          <Property Name="PricePerOne" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Cash" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Change" Type="Decimal" Precision="30" Scale="2" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumberOfOne" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="cat_Id" Type="Int32" />
+          <Property Name="FrID" Type="Int32" Nullable="false" />
+          <Property Name="NewPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="billID" Type="Int32" />
+          <NavigationProperty Name="FreezerCeteogry" Relationship="Self.FK_Trader_FreezerCeteogry" FromRole="Trader" ToRole="FreezerCeteogry" />
+          <NavigationProperty Name="Fridage" Relationship="Self.FK_Trader_Fridage" FromRole="Trader" ToRole="Fridage" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankFreezer_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="0..1" />
+          <End Role="BankFreezer" Type="Self.BankFreezer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="BankFreezer">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEmployee_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="BuildingEmployee" Type="Self.BuildingEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingEmployee">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingMatrial_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="BuildingMatrial" Type="Self.BuildingMatrial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingMatrial">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientReserve_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="ClientReserve" Type="Self.ClientReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientReserve">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonWorks_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="NonWorks" Type="Self.NonWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NonWorks">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reserve_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="0..1" />
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reserve">
+              <PropertyRef Name="BuildID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingEmployee_Employess">
+          <End Role="Employess" Type="Self.Employess" Multiplicity="0..1" />
+          <End Role="BuildingEmployee" Type="Self.BuildingEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employess">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingEmployee">
+              <PropertyRef Name="empID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BuildingMatrial_Matriel">
+          <End Role="Matriel" Type="Self.Matriel" Multiplicity="0..1" />
+          <End Role="BuildingMatrial" Type="Self.BuildingMatrial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Matriel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="BuildingMatrial">
+              <PropertyRef Name="MatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientReserve_Reserve">
+          <End Role="Reserve" Type="Self.Reserve" Multiplicity="0..1" />
+          <End Role="ClientReserve" Type="Self.ClientReserve" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reserve">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ClientReserve">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_FreezerCeteogry">
+          <End Role="FreezerCeteogry" Type="Self.FreezerCeteogry" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FreezerCeteogry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="Cat_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trader_FreezerCeteogry">
+          <End Role="FreezerCeteogry" Type="Self.FreezerCeteogry" Multiplicity="0..1" />
+          <End Role="Trader" Type="Self.Trader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FreezerCeteogry">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Trader">
+              <PropertyRef Name="cat_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_period_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="0..1" />
+          <End Role="period" Type="Self.period" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="period">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trader_Fridage">
+          <End Role="Fridage" Type="Self.Fridage" Multiplicity="1" />
+          <End Role="Trader" Type="Self.Trader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Fridage">
+              <PropertyRef Name="Fr_id" />
+            </Principal>
+            <Dependent Role="Trader">
+              <PropertyRef Name="FrID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NonWorks_NonWorksTable">
+          <End Role="NonWorksTable" Type="Self.NonWorksTable" Multiplicity="0..1" />
+          <End Role="NonWorks" Type="Self.NonWork" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NonWorksTable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NonWorks">
+              <PropertyRef Name="NonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BuildingandFreezerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="BankFreezers" EntityType="Self.BankFreezer" />
+          <EntitySet Name="Buildings" EntityType="Self.Building" />
+          <EntitySet Name="BuildingEmployees" EntityType="Self.BuildingEmployee" />
+          <EntitySet Name="BuildingMatrials" EntityType="Self.BuildingMatrial" />
+          <EntitySet Name="ClientReserves" EntityType="Self.ClientReserve" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Employesses" EntityType="Self.Employess" />
+          <EntitySet Name="FreezerCeteogries" EntityType="Self.FreezerCeteogry" />
+          <EntitySet Name="Fridages" EntityType="Self.Fridage" />
+          <EntitySet Name="Matriels" EntityType="Self.Matriel" />
+          <EntitySet Name="NonWorks" EntityType="Self.NonWork" />
+          <EntitySet Name="NonWorksTables" EntityType="Self.NonWorksTable" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="periods" EntityType="Self.period" />
+          <EntitySet Name="Reserves" EntityType="Self.Reserve" />
+          <EntitySet Name="Traders" EntityType="Self.Trader" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankFreezer_Fridage" Association="Self.FK_BankFreezer_Fridage">
+            <End Role="Fridage" EntitySet="Fridages" />
+            <End Role="BankFreezer" EntitySet="BankFreezers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEmployee_Building" Association="Self.FK_BuildingEmployee_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="BuildingEmployee" EntitySet="BuildingEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingMatrial_Building" Association="Self.FK_BuildingMatrial_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="BuildingMatrial" EntitySet="BuildingMatrials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientReserve_Building" Association="Self.FK_ClientReserve_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="ClientReserve" EntitySet="ClientReserves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonWorks_Building" Association="Self.FK_NonWorks_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="NonWorks" EntitySet="NonWorks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reserve_Building" Association="Self.FK_Reserve_Building">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="Reserve" EntitySet="Reserves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingEmployee_Employess" Association="Self.FK_BuildingEmployee_Employess">
+            <End Role="Employess" EntitySet="Employesses" />
+            <End Role="BuildingEmployee" EntitySet="BuildingEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BuildingMatrial_Matriel" Association="Self.FK_BuildingMatrial_Matriel">
+            <End Role="Matriel" EntitySet="Matriels" />
+            <End Role="BuildingMatrial" EntitySet="BuildingMatrials" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientReserve_Reserve" Association="Self.FK_ClientReserve_Reserve">
+            <End Role="Reserve" EntitySet="Reserves" />
+            <End Role="ClientReserve" EntitySet="ClientReserves" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_FreezerCeteogry" Association="Self.FK_Customer_FreezerCeteogry">
+            <End Role="FreezerCeteogry" EntitySet="FreezerCeteogries" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Fridage" Association="Self.FK_Customer_Fridage">
+            <End Role="Fridage" EntitySet="Fridages" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trader_FreezerCeteogry" Association="Self.FK_Trader_FreezerCeteogry">
+            <End Role="FreezerCeteogry" EntitySet="FreezerCeteogries" />
+            <End Role="Trader" EntitySet="Traders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_period_Fridage" Association="Self.FK_period_Fridage">
+            <End Role="Fridage" EntitySet="Fridages" />
+            <End Role="period" EntitySet="periods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trader_Fridage" Association="Self.FK_Trader_Fridage">
+            <End Role="Fridage" EntitySet="Fridages" />
+            <End Role="Trader" EntitySet="Traders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NonWorks_NonWorksTable" Association="Self.FK_NonWorks_NonWorksTable">
+            <End Role="NonWorksTable" EntitySet="NonWorksTables" />
+            <End Role="NonWorks" EntitySet="NonWorks" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="BankBuildings" EntityType="Models.BankBuilding" />
+        </EntityContainer>
+        <EntityType Name="BankBuilding">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrentPrices" Type="Decimal" Precision="30" Scale="2" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelsStoreContainer" CdmEntityContainer="BuildingandFreezerEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Models.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Models.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Models.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Models.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Models.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankFreezers">
+            <EntityTypeMapping TypeName="Models.BankFreezer">
+              <MappingFragment StoreEntitySet="BankFreezer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CurrentPrices" ColumnName="CurrentPrices" />
+                <ScalarProperty Name="FrID" ColumnName="FrID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="Models.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="buildName" ColumnName="buildName" />
+                <ScalarProperty Name="NamberHouses" ColumnName="NamberHouses" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildingEmployees">
+            <EntityTypeMapping TypeName="Models.BuildingEmployee">
+              <MappingFragment StoreEntitySet="BuildingEmployee">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+                <ScalarProperty Name="empID" ColumnName="empID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BuildingMatrials">
+            <EntityTypeMapping TypeName="Models.BuildingMatrial">
+              <MappingFragment StoreEntitySet="BuildingMatrial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+                <ScalarProperty Name="MatID" ColumnName="MatID" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+                <ScalarProperty Name="MumOfMat" ColumnName="MumOfMat" />
+                <ScalarProperty Name="PricePerOne" ColumnName="PricePerOne" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="BillNumbe" ColumnName="BillNumbe" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientReserves">
+            <EntityTypeMapping TypeName="Models.ClientReserve">
+              <MappingFragment StoreEntitySet="ClientReserve">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+                <ScalarProperty Name="FiatNum" ColumnName="FiatNum" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Models.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="PricePerOneSm" ColumnName="PricePerOneSm" />
+                <ScalarProperty Name="PricePerOneLa" ColumnName="PricePerOneLa" />
+                <ScalarProperty Name="NewPricePerOneLa" ColumnName="NewPricePerOneLa" />
+                <ScalarProperty Name="NewPricePerOneSm" ColumnName="NewPricePerOneSm" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Cat_id" ColumnName="Cat_id" />
+                <ScalarProperty Name="FrID" ColumnName="FrID" />
+                <ScalarProperty Name="billID" ColumnName="billID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="Models.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="DocPath" ColumnName="DocPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employesses">
+            <EntityTypeMapping TypeName="Models.Employess">
+              <MappingFragment StoreEntitySet="Employess">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="empName" ColumnName="empName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FreezerCeteogries">
+            <EntityTypeMapping TypeName="Models.FreezerCeteogry">
+              <MappingFragment StoreEntitySet="FreezerCeteogry">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PricePerTon" ColumnName="PricePerTon" />
+                <ScalarProperty Name="PricePerSmall" ColumnName="PricePerSmall" />
+                <ScalarProperty Name="PricePerLarge" ColumnName="PricePerLarge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fridages">
+            <EntityTypeMapping TypeName="Models.Fridage">
+              <MappingFragment StoreEntitySet="Fridage">
+                <ScalarProperty Name="Fr_id" ColumnName="Fr_id" />
+                <ScalarProperty Name="Fr_Name" ColumnName="Fr_Name" />
+                <ScalarProperty Name="Fr_NumOfSection" ColumnName="Fr_NumOfSection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matriels">
+            <EntityTypeMapping TypeName="Models.Matriel">
+              <MappingFragment StoreEntitySet="Matriel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="matName" ColumnName="matName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonWorks">
+            <EntityTypeMapping TypeName="Models.NonWork">
+              <MappingFragment StoreEntitySet="NonWorks">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="NonId" ColumnName="NonId" />
+                <ScalarProperty Name="Det" ColumnName="Det" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NonWorksTables">
+            <EntityTypeMapping TypeName="Models.NonWorksTable">
+              <MappingFragment StoreEntitySet="NonWorksTable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nonName" ColumnName="nonName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="Models.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="periods">
+            <EntityTypeMapping TypeName="Models.period">
+              <MappingFragment StoreEntitySet="period">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PeriodName" ColumnName="PeriodName" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="FrID" ColumnName="FrID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserves">
+            <EntityTypeMapping TypeName="Models.Reserve">
+              <MappingFragment StoreEntitySet="Reserve">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="BuildID" ColumnName="BuildID" />
+                <ScalarProperty Name="FlatNumber" ColumnName="FlatNumber" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+                <ScalarProperty Name="ClientAddress" ColumnName="ClientAddress" />
+                <ScalarProperty Name="ClientPhoto" ColumnName="ClientPhoto" />
+                <ScalarProperty Name="RePrices" ColumnName="RePrices" />
+                <ScalarProperty Name="CashPrices" ColumnName="CashPrices" />
+                <ScalarProperty Name="Comission" ColumnName="Comission" />
+                <ScalarProperty Name="ChangePrices" ColumnName="ChangePrices" />
+                <ScalarProperty Name="NumPrem" ColumnName="NumPrem" />
+                <ScalarProperty Name="DateFirstPrem" ColumnName="DateFirstPrem" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Traders">
+            <EntityTypeMapping TypeName="Models.Trader">
+              <MappingFragment StoreEntitySet="Trader">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="PricePerOne" ColumnName="PricePerOne" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Cash" ColumnName="Cash" />
+                <ScalarProperty Name="Change" ColumnName="Change" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="NumberOfOne" ColumnName="NumberOfOne" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="cat_Id" ColumnName="cat_Id" />
+                <ScalarProperty Name="FrID" ColumnName="FrID" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="billID" ColumnName="billID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Models.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="BankBuildings">
+            <EntityTypeMapping TypeName="Models.BankBuilding">
+              <MappingFragment StoreEntitySet="BankBuilding">
+                <ScalarProperty Name="CurrentPrices" ColumnName="CurrentPrices" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

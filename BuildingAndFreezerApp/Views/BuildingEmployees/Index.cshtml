@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.BuildingEmployee>
+
+@{
+    <h2 class="alert alert-success text-center">الموظفين </h2>
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            @Html.DisplayNameFor(model => model.Employess.empName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building.buildName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>تعديل</th>
+        <th>حذف</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employess.empName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Building.buildName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+
+        </tr>
+    }
+
+</table>

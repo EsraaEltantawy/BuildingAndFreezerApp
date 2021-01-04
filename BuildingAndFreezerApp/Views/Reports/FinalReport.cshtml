@@ -1,0 +1,38 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Trader>
+
+@{
+    ViewBag.Title = "FinalReport";
+    decimal total = 0;
+}
+
+<h2 class="alert alert-success text-center">تقرير شامل للتلاجات</h2>
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>اسم العنبر</th>
+        <th>عنبر امامى فوق</th>
+        <th>عنبر امامى تحت</th>
+        <th>عنبر اوسط فوق</th>
+        <th>عنبر اوسط تحت</th>
+        <th>عنبر خلفى فوق</th>
+        <th>عنبر خلفى تحت</th>
+    </tr>
+
+    <tr>
+        <td>عدد الاطنان</td>
+        <td>@{var x1 = ViewBag.one == null ? 0 : ViewBag.one;} @x1</td>
+        <td>@{var x2 = ViewBag.two == null ? 0 : ViewBag.one;}@x2</td>
+        <td>@{var x3 = ViewBag.three == null ? 0 : ViewBag.one;}@x3</td>
+        <td>@{var x4 = ViewBag.four == null ? 0 : ViewBag.one;}@x4</td>
+        <td>@{var x5 = ViewBag.five == null ? 0 : ViewBag.one;}@x5</td>
+        <td>@{var x6 = ViewBag.six == null ? 0 : ViewBag.one;}@x6</td>
+    </tr>
+    <tfoot>
+        <tr class="alert alert-success">
+            <td>اجمالى عدد الاطنان</td>
+            <td colspan="6">@{total += x1 + x2 + x3 + x4 + x5 + x6;}  @total</td>
+        </tr>
+    </tfoot>
+
+
+</table>

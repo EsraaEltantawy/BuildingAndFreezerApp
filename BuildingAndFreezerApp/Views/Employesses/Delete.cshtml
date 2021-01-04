@@ -1,0 +1,32 @@
+﻿@model BuildingAndFreezerApp.Models.Employess
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="alert alert-danger text-center"> حذف </h2>
+
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.empName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

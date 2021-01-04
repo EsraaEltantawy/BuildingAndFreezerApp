@@ -1,0 +1,62 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsMatrial";
+    int i = -1;
+    int buildid = 1;
+    if (ViewBag.buildid != null)
+    {
+        buildid = (int)ViewBag.buildid;
+    }
+}
+
+<h2 class="alert alert-success text-center">تفاصيل المواد</h2>
+<div class="panel">
+    <div class="panel-body alert alert-info text-right">
+        <h3>
+            الاجمالى مواد البناء : @ViewBag.sum
+        </h3>
+    </div>
+</div>
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary">المواد </caption>
+    <thead>
+        <tr class="table alert alert-danger table-active table-warning">
+            <th>
+                اسم المادة
+            </th>
+            <th>
+                اجمالى الفلوس
+            </th>
+            <th>
+                اجمالى العدد
+            </th>
+            <th>
+                تفاصيل
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Matriels)
+        {
+            i++;
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.matName)
+                </td>
+                <td>
+                    @ViewBag.sumMatrial[i]
+                </td>
+                <td>
+                    @ViewBag.NumMatrial[i]
+                </td>
+                <td>
+                    @Html.ActionLink("تفاصيل", "DetailsOneMatrial", new { id = item.id, buildId = Model.buildId }, new { @class = "btn btn-success" })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

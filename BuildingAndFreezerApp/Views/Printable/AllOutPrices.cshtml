@@ -1,0 +1,45 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.Title = "AllOutPrices";
+    int index = Model.BankBuilding.Max(x => x.id);
+    decimal? bank = Model.BankBuilding.Where(x => x.id == index).FirstOrDefault().CurrentPrices;
+    var sum = Model.BuildingEmployee.Sum(x => x.Price) + Model.BuildingMatrial.Sum(x => x.Prices) + Model.NonWorks.Sum(x => x.Prices);
+    var exportMoney = Model.Reserves.Sum(x => x.RePrices - x.Comission);
+    var profit = exportMoney - sum;
+
+}
+
+<h2 class="alert alert-success text-center">تقرير العمارات</h2>
+
+
+<div class="panel">
+    <div class="panel-body">
+        <div class="alert alert-warning">
+            <h4>الخزنة</h4>
+            <h4>@String.Format("{0:0,0.0}", bank)</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-success">
+            <h4> اجمالى حجز العمارات</h4>
+            <h4>@String.Format("{0:0,0.0}", exportMoney)</h4>
+        </div>
+        <hr />
+        <br />
+        <div class="alert alert-danger">
+            <h4> اجمالى المصاريف</h4>
+            <h4>@String.Format("{0:0,0.0}", sum)</h4>
+        </div>
+        <hr />
+        <br />
+
+        <div class="alert alert-info">
+            <h4>صافى الربح</h4>
+            <h4>
+                @String.Format("{0:0,0.0}", profit)
+            </h4>
+        </div>
+    </div>
+</div>

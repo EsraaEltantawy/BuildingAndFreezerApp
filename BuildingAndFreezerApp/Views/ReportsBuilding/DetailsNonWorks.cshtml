@@ -1,0 +1,55 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsNonWorks";
+    int i = -1;
+
+}
+
+<h2 class="alert alert-success text-center">تفاصيل النثريات</h2>
+<div class="panel">
+    <div class="panel-body">
+        <div class="alert alert-info text-right">
+
+            <h4>اجمالى الاعمال النثرية</h4>
+            <h4>@ViewBag.sum</h4>
+        </div>
+
+    </div>
+</div>
+
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary"> الاعمال النثرية</caption>
+
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            النوع
+        </th>
+        <th>
+            الاجمالى
+        </th>
+        <th>
+            تفاصيل
+        </th>
+    </tr>
+
+    @foreach (var item in Model.NonWorksTables)
+    {
+        i++;
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nonName)
+            </td>
+            <td>
+                @ViewBag.sumNonWorks[i]
+            </td>
+            <td>
+                @Html.ActionLink("تفاصيل", "DetailsOneNonworks", new { id = item.Id, buildId = Model.buildId }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+
+
+</table>

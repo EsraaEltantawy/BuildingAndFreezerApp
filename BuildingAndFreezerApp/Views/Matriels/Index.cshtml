@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Matriel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="alert alert-success text-center">مواد البناء</h2>
+<p>
+    @Html.ActionLink("اضافة جديد", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class=" alert alert-danger table-active table-warning">
+
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.matName)
+        </th>
+        <th class="text-center">تعديل</th>
+        <th class="text-center">حذف</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.matName)
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

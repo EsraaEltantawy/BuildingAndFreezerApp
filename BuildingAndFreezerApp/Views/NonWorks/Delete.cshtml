@@ -1,0 +1,63 @@
+﻿@model BuildingAndFreezerApp.Models.NonWork
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 class="alert alert-danger text-center"> حذف </h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Det)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Det)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Building.buildName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building.buildName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NonWorksTable.nonName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NonWorksTable.nonName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

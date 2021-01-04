@@ -1,0 +1,48 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "DetailsOneMatrial";
+}
+
+<h2 class="alert alert-success text-center">تفاصيل المادة</h2>
+
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <caption class="table table-primary">المواد</caption>
+
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            اسم الماده
+        </th>
+        <th>
+            المبلغ
+        </th>
+        <th>
+            العدد
+        </th>
+        <th>
+            التاريخ
+        </th>
+    </tr>
+
+    @foreach (var item in Model.BuildingMatrial)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matriel.matName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prices)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MumOfMat)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>

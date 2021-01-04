@@ -1,0 +1,179 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+
+@{
+    ViewBag.Title = "Details";
+    decimal? sum = 0;
+    decimal? x = 0;
+}
+
+<h2 class="alert alert-success text-center">تفاصيل </h2>
+<div class="row">
+    <div class="col-md-6">
+        <br />
+
+        <table class="table table-borderless table-bordered table-hover table-striped">
+            <caption class="table table-primary"> العملاء</caption>
+
+            <tr class="table alert alert-danger table-active table-warning">
+                <th>
+                    اسم العميل
+                </th>
+                <th>
+                    المدفوع
+                </th>
+                <th>
+                    الباقى
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Reserves)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClientName)
+                    </td>
+                    <td>
+                        @item.CashPrices
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChangePrices)
+                    </td>
+                </tr>
+            }
+
+        </table><br /><br />
+        <table class="table table-borderless table-bordered table-hover table-striped">
+            <caption class="table table-primary">المواد</caption>
+
+            <tr class="table alert alert-danger table-active table-warning">
+                <th>
+                    اسم الماده
+                </th>
+                <th>
+                    المبلغ
+                </th>
+                <th>
+                    التاريخ
+                </th>
+            </tr>
+
+            @foreach (var item in Model.BuildingMatrial)
+            {
+                sum += item.Prices == null ? 0 : item.Prices;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Matriel.matName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prices)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <hr />
+
+    <div class="col-md-6">
+        <table class="table table-borderless table-bordered table-hover table-striped">
+            <caption>العمال</caption>
+
+            <tr class="table alert alert-danger table-active table-warning">
+                <th>
+                    اسم العامل
+                </th>
+                <th>
+                    المبلغ
+                </th>
+                <th>
+                    التاريخ
+                </th>
+            </tr>
+
+            @foreach (var item in Model.BuildingEmployee)
+            {
+                sum += item.Price == null ? 0 : item.Price;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employess.empName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <table class="table table-borderless table-bordered table-hover table-striped ">
+            <caption>الاعمال النثرية</caption>
+            <tr>
+                <th>
+                    الاسم
+                </th>
+                <th>
+                    المبلغ
+                </th>
+                <th>
+                    التاريخ
+                </th>
+            </tr>
+
+            @foreach (var item in Model.NonWorks)
+            {
+                sum += item.Prices == null ? 0 : item.Prices;
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NonWorksTable.nonName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prices)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br />
+</div>
+<div class="card">
+    <div class="card-body alert alert-success text-right">
+        <h3>الاجمالى : @sum</h3>
+    </div>
+</div>
+@*<div>
+        <h4>Building</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.buildName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.buildName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NamberHouses)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NamberHouses)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

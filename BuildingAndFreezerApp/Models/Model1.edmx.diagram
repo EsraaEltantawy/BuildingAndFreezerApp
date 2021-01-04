@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="941025f037544fe5ad0ec891b6ce2d8d" Name="Diagram1">
+        <EntityTypeShape EntityType="Models.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetRole" Width="1.5" PointX="13.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUserClaim" Width="1.5" PointX="18.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUserLogin" Width="1.5" PointX="18.25" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.AspNetUser" Width="1.5" PointX="16" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BankFreezer" Width="1.5" PointX="11" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Building" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BuildingEmployee" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.BuildingMatrial" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.ClientReserve" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Customer" Width="1.5" PointX="14" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Document" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Employess" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.FreezerCeteogry" Width="1.5" PointX="11.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Fridage" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Matriel" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.NonWork" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.NonWorksTable" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Payment" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.period" Width="1.5" PointX="11" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Reserve" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Models.Trader" Width="1.5" PointX="14" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="Models.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BankFreezer_Fridage" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BuildingEmployee_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BuildingMatrial_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_ClientReserve_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_NonWorks_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Reserve_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BuildingEmployee_Employess" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_BuildingMatrial_Matriel" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_ClientReserve_Reserve" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Customer_FreezerCeteogry" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Customer_Fridage" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Trader_FreezerCeteogry" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_period_Fridage" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_Trader_Fridage" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.FK_NonWorks_NonWorksTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Models.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Models.BankBuilding" Width="1.5" PointX="5.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

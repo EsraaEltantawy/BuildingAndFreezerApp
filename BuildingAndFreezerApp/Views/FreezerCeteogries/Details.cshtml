@@ -1,0 +1,49 @@
+﻿@model BuildingAndFreezerApp.Models.FreezerCeteogry
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1 class="alert alert-success text-center">تفاصيل</h1>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerSmall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerSmall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerLarge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerLarge)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

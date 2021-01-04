@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BuildingAndFreezerApp.Models.Document>
+
+
+@{
+    ViewBag.Title = "Index"; Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+
+}
+<h1 class="alert alert-success text-center">الملفات</h1>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table table-borderless table-bordered table-hover table-striped">
+    <tr class="table alert alert-danger table-active table-warning">
+        <th>
+            @Html.DisplayNameFor(model => model.DocName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DocPath)
+        </th>
+        <th>تعديل</th>
+        <th>تنزيل</th>
+
+        <th>حذف</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocPath)
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = item.id }, new { @class = "btn btn-success" })
+            </td>
+            <td>
+                @Html.ActionLink("تنزيل", "Download", new { id = item.id }, new { @class = "btn btn-warning" })
+            </td>
+            <td>
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

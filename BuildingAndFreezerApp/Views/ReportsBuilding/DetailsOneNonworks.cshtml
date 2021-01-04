@@ -1,0 +1,37 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingRepositry
+@{
+    ViewBag.Title = "DetailsOneNonworks";
+}
+<h2 class="alert alert-success text-center">تفاصيل النثريات</h2>
+
+
+<table class="table table-borderless table-bordered table-hover table-striped ">
+    <caption>الاعمال النثرية</caption>
+    <tr>
+        <th>
+            الاسم
+        </th>
+        <th>
+            المبلغ
+        </th>
+        <th>
+            التاريخ
+        </th>
+    </tr>
+
+    @foreach (var item in Model.NonWorks)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NonWorksTable.nonName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prices)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+        </tr>
+    }
+
+</table>

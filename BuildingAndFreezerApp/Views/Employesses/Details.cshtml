@@ -1,0 +1,25 @@
+﻿@model BuildingAndFreezerApp.Models.Employess
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1 class="alert alert-success text-center">تفاصيل</h1>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.empName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.empName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

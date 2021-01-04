@@ -1,0 +1,54 @@
+﻿@model BuildingAndFreezerApp.Models.FreezerCeteogry
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h2 class="alert alert-danger text-center"> حذف </h2>
+
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerTon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerTon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerSmall)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerSmall)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerLarge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerLarge)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

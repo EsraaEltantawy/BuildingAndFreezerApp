@@ -1,0 +1,72 @@
+﻿@model BuildingAndFreezerApp.Models.BuildingMatrial
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 class="alert alert-success text-center">تفاصيل  </h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BillNumbe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BillNumbe)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Prices)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prices)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MumOfMat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MumOfMat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PricePerOne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PricePerOne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Building.buildName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Building.buildName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matriel.matName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matriel.matName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تعديل ", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("العودة للصفحة السابقة", "Index")
+</p>

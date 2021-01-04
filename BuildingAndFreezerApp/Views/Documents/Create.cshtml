@@ -1,0 +1,62 @@
+﻿@model BuildingAndFreezerApp.Models.Document
+
+@{
+    ViewBag.Title = "Create"; Layout = "~/Views/Shared/_LayoutFreezer.cshtml";
+
+}
+
+<h2 class="alert alert-success text-center"> اضافة</h2>
+
+
+@using (Html.BeginForm("Create", "Documents", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="alert alert-danger animated fadeInRight" id="div-errorteacher" style="display: none; text-align: center">
+        <span id="view-errorteacher"></span>
+    </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.DocName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DocName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DocName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DocPath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input name="upload" type="file" id="teacherImage" class="btn btn-default" />
+                @Html.ValidationMessageFor(model => model.DocPath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="file" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $('#file').click(function () {
+                if ($('#teacherImage').val() == "") {
+                    $('#div-errorteacher').fadeIn(2000);
+                    $('#view-errorteacher').append('Please Choose File   ');
+                    return false;
+                }
+            });
+        });
+    </script>
+}
